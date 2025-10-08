@@ -5,92 +5,88 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Shared Checklist</title>
 
-<!-- Fraunces font -->
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Fraunces font -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-/* === ORIGINAL STYLE - left unchanged === */
-.checklist {
-  list-style: none;
-  padding: 0;
-  max-width: 300px;
-  margin: 0 auto;
-  font-family: fraunces;
-}
-.checklist li {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  background: #f0f0f0;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  transition: background 0.3s;
-  cursor: pointer;
-  position: relative;
-}
-.checklist li.checked {
-  background: #FFFFFF;
-  animation: checkAnim 0.5s ease-out;
-}
-.checklist li::before {
-  content: "🔒";
-  margin-right: 10px;
-  font-size: 18px;
-  transition: transform 0.3s ease;
-}
-.checklist li.checked::before {
-  content: "🔓";
-  color: gray;
-  transform: scale(1.3);
-}
-@keyframes checkAnim {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* Top-left last-updated box, password box, stop button (kept small & matching) */
-#statusBox{
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  background: #f0f0f0;
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-family: fraunces;
-  font-size: 14px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-#passwordBox{
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: #fff;
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-family: fraunces;
-  font-size: 14px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-#passwordBox input{border:1px solid #ccc;border-radius:4px;padding:4px;}
-#stopEditBtn{
-  display:none;
-  position: fixed;
-  top: 50px;
-  right: 10px;
-  background: #f0f0f0;
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-family: fraunces;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-/* edit-mode visual rules (only applied while editing; base CSS remains unchanged) */
-.edit-mode li { color: white !important; }
-.edit-mode li.checked { background: rgba(168,198,134,0.5) !important; } /* matcha */
-.edit-mode li:not(.checked) { background: rgba(139,0,0,0.5) !important; } /* dark red */
+    /* === ORIGINAL STYLE - left unchanged === */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      max-width: 300px;
+      margin: 0 auto;
+      font-family: 'Fraunces', serif;
+    }
+    .checklist li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background: #f0f0f0;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      transition: background 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+    .checklist li.checked {
+      background: #FFFFFF;
+      animation: checkAnim 0.5s ease-out;
+    }
+    .checklist li::before {
+      content: "🔒";
+      margin-right: 10px;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+    .checklist li.checked::before {
+      content: "🔓";
+      color: gray;
+      transform: scale(1.3);
+    }
+    @keyframes checkAnim {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    #statusBox{
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #f0f0f0;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    #passwordBox{
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #fff;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    #passwordBox input{border:1px solid #ccc;border-radius:4px;padding:4px;}
+    #stopEditBtn{
+      display:none;
+      position: fixed;
+      top: 50px;
+      right: 10px;
+      background: #f0f0f0;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .edit-mode li { color: white !important; }
+    .edit-mode li.checked { background: rgba(168,198,134,0.5) !important; }
+    .edit-mode li:not(.checked) { background: rgba(139,0,0,0.5) !important; }
   </style>
 </head>
 <body>
@@ -104,374 +100,130 @@
 
   <button id="stopEditBtn" type="button">Stop Editing</button>
 
-<ul class="checklist">
-  <!-- WM -->
-  <li data-id="0">WM - Chapter 1</li>
-  <li data-id="1">WM - Chapter 2</li>
-  <li data-id="2">WM - Chapter 3</li>
-  <li data-id="3">WM - Chapter 4</li>
-  <li data-id="4">WM - Chapter 5</li>
-  <li data-id="5">WM - Chapter 6</li>
-  <li data-id="6">WM - Chapter 7</li>
-  <li data-id="7">WM - Chapter 8</li>
-  <li data-id="8">WM - Chapter 9</li>
-  <li data-id="9">WM - Chapter 10</li>
-  <li data-id="10">WM - Chapter 11</li>
-  <li data-id="11">WM - Chapter 12</li>
-  <li data-id="12">WM - Chapter 13</li>
-  <li data-id="13">WM - Chapter 14</li>
-  <li data-id="14">WM - Chapter 15</li>
-  <li data-id="15">WM - Chapter 16</li>
-  <li data-id="16">WM - Chapter 17</li>
-  <li data-id="17">WM - Chapter 18</li>
-  <li data-id="18">WM - Chapter 19</li>
-  <li data-id="19">WM - Chapter 20</li>
-  <li data-id="20">WM - Chapter 21</li>
-  <li data-id="21">WM - Chapter 22</li>
-  <li data-id="22">WM - Chapter 23</li>
-  <li data-id="23">WM - Chapter 24</li>
-  <li data-id="24">WM - Chapter 25</li>
-  <li data-id="25">WM - Chapter 26</li>
+  <ul class="checklist" id="checklist">
+    <!-- Your sequential data-id list goes here -->
+  </ul>
 
-  <!-- KCC -->
-  <li data-id="26">KCC - Chapter 1</li>
-  <li data-id="27">KCC - Chapter 2</li>
-  <li data-id="28">KCC - Chapter 3</li>
-  <li data-id="29">KCC - Chapter 4</li>
-  <li data-id="30">KCC - Chapter 5</li>
-  <li data-id="31">KCC - Chapter 6</li>
-  <li data-id="32">KCC - Chapter 7</li>
-  <li data-id="33">KCC - Chapter 8</li>
-  <li data-id="34">KCC - Chapter 9</li>
-  <li data-id="35">KCC - Chapter 10</li>
-  <li data-id="36">KCC - Chapter 11</li>
-  <li data-id="37">KCC - Chapter 12</li>
-  <li data-id="38">KCC - Chapter 13</li>
-  <li data-id="39">KCC - Chapter 14</li>
-  <li data-id="40">KCC - Chapter 15</li>
-  <li data-id="41">KCC - Chapter 16</li>
-  <li data-id="42">KCC - Chapter 17</li>
-  <li data-id="43">KCC - Chapter 18</li>
-  <li data-id="44">KCC - Chapter 19</li>
-  <li data-id="45">KCC - Chapter 20</li>
-  <li data-id="46">KCC - Chapter 21</li>
-  <li data-id="47">KCC - Chapter 22</li>
-  <li data-id="48">KCC - Chapter 23</li>
-  <li data-id="49">KCC - Chapter 24</li>
-  <li data-id="50">KCC - Chapter 25</li>
-  <li data-id="51">KCC - Chapter 26</li>
-  <li data-id="52">KCC - Chapter 27</li>
-  <li data-id="53">KCC - Chapter 28</li>
-  <li data-id="54">KCC - Chapter 29</li>
-  <li data-id="55">KCC - Chapter 30</li>
-  <li data-id="56">KCC - Chapter 31</li>
-  <li data-id="57">KCC - Chapter 32</li>
-  <li data-id="58">KCC - Chapter 33</li>
-  <li data-id="59">KCC - Chapter 34</li>
-  <li data-id="60">KCC - Chapter 35</li>
-  <li data-id="61">KCC - Chapter 36</li>
-  <li data-id="62">KCC - Chapter 37</li>
-
-  <!-- SS -->
-  <li data-id="63">SS - Chapter 1</li>
-  <li data-id="64">SS - Chapter 2</li>
-  <li data-id="65">SS - Chapter 3</li>
-  <li data-id="66">SS - Chapter 4</li>
-  <li data-id="67">SS - Chapter 5</li>
-  <li data-id="68">SS - Chapter 6</li>
-
-  <!-- HTK -->
-  <li data-id="69">HTK - Chapter 1</li>
-  <li data-id="70">HTK - Chapter 2</li>
-  <li data-id="71">HTK - Chapter 3</li>
-  <li data-id="72">HTK - Chapter 4</li>
-  <li data-id="73">HTK - Chapter 5</li>
-
-  <!-- STM -->
-  <li data-id="74">STM - Chapter 1</li>
-  <li data-id="75">STM - Chapter 2</li>
-  <li data-id="76">STM - Chapter 3</li>
-  <li data-id="77">STM - Chapter 4</li>
-  <li data-id="78">STM - Chapter 5</li>
-  <li data-id="79">STM - Chapter 6</li>
-  <li data-id="80">STM - Chapter 7</li>
-  <li data-id="81">STM - Chapter 8</li>
-  <li data-id="82">STM - Chapter 9</li>
-  <li data-id="83">STM - Chapter 10</li>
-
-  <!-- GVN -->
-  <li data-id="84">GVN - Chapter 1</li>
-  <li data-id="85">GVN - Chapter 2</li>
-  <li data-id="86">GVN - Chapter 3</li>
-  <li data-id="87">GVN - Chapter 4</li>
-  <li data-id="88">GVN - Chapter 5</li>
-  <li data-id="89">GVN - Chapter 6</li>
-  <li data-id="90">GVN - Chapter 7</li>
-  <li data-id="91">GVN - Chapter 8</li>
-  <li data-id="92">GVN - Chapter 9</li>
-
-  <!-- FMM -->
-  <li data-id="93">FMM - Chapter 1</li>
-  <li data-id="94">FMM - Chapter 2</li>
-  <li data-id="95">FMM - Chapter 3</li>
-  <li data-id="96">FMM - Chapter 4</li>
-  <li data-id="97">FMM - Chapter 5</li>
-  <li data-id="98">FMM - Chapter 6</li>
-  <li data-id="99">FMM - Chapter 7</li>
-  <li data-id="100">FMM - Chapter 8</li>
-  <li data-id="101">FMM - Chapter 9</li>
-  <li data-id="102">FMM - Chapter 10</li>
-  <li data-id="103">FMM - Chapter 11</li>
-  <li data-id="104">FMM - Chapter 12</li>
-  <li data-id="105">FMM - Chapter 13</li>
-  <li data-id="106">FMM - Chapter 14</li>
-  <li data-id="107">FMM - Chapter 15</li>
-
-  <!-- HMS -->
-  <li data-id="108">HMS - Chapter 1</li>
-  <li data-id="109">HMS - Chapter 2</li>
-  <li data-id="110">HMS - Chapter 3</li>
-  <li data-id="111">HMS - Chapter 4</li>
-
-  <!-- LS -->
-  <li data-id="112">LS - Chapter 1</li>
-  <li data-id="113">LS - Chapter 2</li>
-  <li data-id="114">LS - Chapter 3</li>
-  <li data-id="115">LS - Chapter 4</li>
-  <li data-id="116">LS - Chapter 5</li>
-  <li data-id="117">LS - Chapter 6</li>
-  <li data-id="118">LS - Chapter 7</li>
-  <li data-id="119">LS - Chapter 8</li>
-
-  <!-- HOB -->
-  <li data-id="120">HOB - Chapter 1</li>
-  <li data-id="121">HOB - Chapter 2</li>
-  <li data-id="122">HOB - Chapter 3</li>
-  <li data-id="123">HOB - Chapter 4</li>
-  <li data-id="124">HOB - Chapter 5</li>
-  <li data-id="125">HOB - Chapter 6</li>
-  <li data-id="126">HOB - Chapter 7</li>
-  <li data-id="127">HOB - Chapter 8</li>
-
-  <!-- CM -->
-  <li data-id="128">CM - Chapter 1</li>
-  <li data-id="129">CM - Chapter 2</li>
-  <li data-id="130">CM - Chapter 3</li>
-  <li data-id="131">CM - Chapter 4</li>
-  <li data-id="132">CM - Chapter 5</li>
-  <li data-id="133">CM - Chapter 6</li>
-  <li data-id="134">CM - Chapter 7</li>
-  <li data-id="135">CM - Chapter 8</li>
-  <li data-id="136">CM - Chapter 9</li>
-  <li data-id="137">CM - Chapter 10</li>
-  <li data-id="138">CM - Chapter 11</li>
-  <li data-id="139">CM - Chapter 12</li>
-  <li data-id="140">CM - Chapter 13</li>
-  <li data-id="141">CM - Chapter 14</li>
-  <li data-id="142">CM - Chapter 15</li>
-
-  <!-- OHC -->
-  <li data-id="143">OHC - Chapter 1</li>
-  <li data-id="144">OHC - Chapter 2</li>
-  <li data-id="145">OHC - Chapter 3</li>
-  <li data-id="146">OHC - Chapter 4</li>
-  <li data-id="147">OHC - Chapter 5</li>
-  <li data-id="148">OHC - Chapter 6</li>
-  <li data-id="149">OHC - Chapter 7</li>
-  <li data-id="150">OHC - Chapter 8</li>
-  <li data-id="151">OHC - Chapter 9</li>
-  <li data-id="152">OHC - Chapter 10</li>
-  <li data-id="153">OHC - Chapter 11</li>
-  <li data-id="154">OHC - Chapter 12</li>
-  <li data-id="155">OHC - Chapter 13</li>
-  <li data-id="156">OHC - Chapter 14</li>
-  <li data-id="157">OHC - Chapter 15</li>
-  <li data-id="158">OHC - Chapter 16</li>
-  <li data-id="159">OHC - Chapter 17</li>
-  <li data-id="160">OHC - Chapter 18</li>
-</ul>
-
-
-  <!-- Firebase compat build (works on static hosting) -->
+  <!-- Firebase compat build -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
   <script>
-  /******************************************************************
-   * Firebase config (the project you asked to use)
-   ******************************************************************/
- const firebaseConfig = {
-  apiKey: "AIzaSyCyxHx_yBvVXiv-7N3S4dw074LPlaJPIDk",
-  authDomain: "jasssmineschecklists.firebaseapp.com",
-  projectId: "jasssmineschecklists",
-  storageBucket: "jasssmineschecklists.firebasestorage.app",
-  messagingSenderId: "52507566419",
-  appId: "1:52507566419:web:2197623732822cf2b741a6"
-};
-
-
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-  const mainDocRef = db.collection('checklist').doc('main');
-
-  const adminPassword = 'JasminesDataBase'; // your password (used client-side)
-  let isAdmin = false;
-
-  const checklistEl = document.getElementById('checklist');
-  const statusBox = document.getElementById('statusBox');
-  const adminPassInput = document.getElementById('adminPass');
-  const loginBtn = document.getElementById('loginBtn');
-  const stopEditBtn = document.getElementById('stopEditBtn');
-
-  /***** UTIL: read UI -> state object *****/
-  function readStateFromUI(){
-    const state = {};
-    checklistEl.querySelectorAll('li').forEach(li=>{
-      state[li.dataset.id] = li.classList.contains('checked');
-    });
-    return state;
-  }
-
-  /***** UTIL: apply state to UI (used when snapshot updates) *****/
-  function applyStateToUI(state){
-    checklistEl.querySelectorAll('li').forEach(li=>{
-      const id = li.dataset.id;
-      if (state && state[id]) li.classList.add('checked');
-      else li.classList.remove('checked');
-
-      // Remove any inline styles if not admin (return to base look)
-      if (!isAdmin){
-        li.removeAttribute('style');
-      }
-    });
-  }
-
-  /***** real-time listener: everyone sees updates instantly *****/
-  mainDocRef.onSnapshot(docSnap => {
-    if (!docSnap.exists){
-      statusBox.textContent = "Last Updated: never";
-      return;
-    }
-    const data = docSnap.data();
-    statusBox.textContent = "Last Updated: " + (data.lastUpdated || 'unknown');
-    // update UI if non-admin (if admin is actively editing, we avoid stomping their inline edits)
-    if (!isAdmin){
-      applyStateToUI(data.state || {});
-    }
-  }, err => {
-    console.error('Firestore onSnapshot error:', err);
-    statusBox.textContent = "Last Updated: error";
-  });
-
-  /***** save -> includes adminKey required by suggested Firestore rule *****/
-  async function saveChecklist(){
-    if (!isAdmin) return;
-    const state = readStateFromUI();
-    const payload = {
-      state,
-      lastUpdated: new Date().toLocaleString(),
-      adminKey: adminPassword // Firestore rule (see step-by-step) will check this value
+    const firebaseConfig = {
+      apiKey: "AIzaSyCyxHx_yBvVXiv-7N3S4dw074LPlaJPIDk",
+      authDomain: "jasssmineschecklists.firebaseapp.com",
+      projectId: "jasssmineschecklists",
+      storageBucket: "jasssmineschecklists.firebasestorage.app",
+      messagingSenderId: "52507566419",
+      appId: "1:52507566419:web:2197623732822cf2b741a6"
     };
-    try {
-      await mainDocRef.set(payload);
-      // note: status updated via snapshot too
-    } catch (e) {
-      console.error('Save failed', e);
-      alert('Could not save changes. Check console for details.');
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const mainDocRef = db.collection('checklist').doc('main');
+
+    const adminPassword = 'JasminesDataBase';
+    let isAdmin = false;
+
+    const checklistEl = document.getElementById('checklist');
+    const statusBox = document.getElementById('statusBox');
+    const adminPassInput = document.getElementById('adminPass');
+    const loginBtn = document.getElementById('loginBtn');
+    const stopEditBtn = document.getElementById('stopEditBtn');
+
+    function readStateFromUI() {
+      const state = {};
+      checklistEl.querySelectorAll('li').forEach(li => {
+        state[li.dataset.id] = li.classList.contains('checked');
+      });
+      return state;
     }
-  }
 
-  /***** handle clicks on items: editable only when isAdmin *****/
-  checklistEl.querySelectorAll('li').forEach(li => {
-    li.addEventListener('click', async () => {
-      if (!isAdmin) return; // prevent non-admin editing
-      li.classList.toggle('checked');
+    function applyStateToUI(state) {
+      checklistEl.querySelectorAll('li').forEach(li => {
+        const id = li.dataset.id;
+        li.classList.toggle('checked', state && state[id]);
+        if (!isAdmin) li.removeAttribute('style');
+      });
+    }
 
-      // visual inline transition for edit mode (keeps original CSS unchanged otherwise)
-      li.style.transition = "background .8s ease, color .8s ease, opacity .6s ease";
-      if (li.classList.contains('checked')) {
-        li.style.background = "rgba(168,198,134,0.5)"; // matcha
-        li.style.color = "#fff";
-      } else {
-        li.style.background = "rgba(139,0,0,0.5)"; // dark red
-        li.style.color = "#fff";
+    mainDocRef.onSnapshot(docSnap => {
+      if (!docSnap.exists) {
+        statusBox.textContent = "Last Updated: never";
+        return;
       }
-
-      await saveChecklist();
-    });
-  });
-
-  /***** staggered pop-in for edit mode *****/
-  function staggerFadeIn(){
-    const items = Array.from(checklistEl.querySelectorAll('li'));
-    items.forEach((li, i) => {
-      li.style.opacity = "0";
-      setTimeout(()=> {
-        li.style.transition = "opacity .45s ease";
-        li.style.opacity = "1";
-      }, i * 70);
-    });
-  }
-
-  /***** activate & deactivate edit mode *****/
-  function activateEditMode(){
-    if (isAdmin) return;
-    isAdmin = true;
-    document.body.classList.add('edit-mode');
-    stopEditBtn.style.display = 'block';
-
-    checklistEl.querySelectorAll('li').forEach(li=>{
-      li.style.transition = "opacity .6s ease, background .8s ease, color .8s ease";
-      li.style.color = "#fff";
-      li.style.background = li.classList.contains('checked')
-        ? "rgba(168,198,134,0.5)"
-        : "rgba(139,0,0,0.5)";
+      const data = docSnap.data();
+      statusBox.textContent = "Last Updated: " + (data.lastUpdated || 'unknown');
+      if (!isAdmin) applyStateToUI(data.state || {});
+    }, err => {
+      console.error(err);
+      statusBox.textContent = "Last Updated: error";
     });
 
-    staggerFadeIn();
-    loginBtn.blur();
-    adminPassInput.value = '';
-  }
-
-  function deactivateEditMode(){
-    if (!isAdmin) return;
-    isAdmin = false;
-    document.body.classList.remove('edit-mode');
-    stopEditBtn.style.display = 'none';
-    // remove inline styles so original CSS returns (no styling change)
-    checklistEl.querySelectorAll('li').forEach(li => li.removeAttribute('style'));
-  }
-
-  /***** login attempt (button or Enter key) *****/
-  function attemptLogin(){
-    const val = (adminPassInput.value || '').trim();
-    if (val === adminPassword){
-      activateEditMode();
-    } else {
-      adminPassInput.setAttribute('aria-invalid','true');
-      alert('Incorrect password.');
-      adminPassInput.focus();
+    async function saveChecklist(){
+      if (!isAdmin) return;
+      const state = readStateFromUI();
+      const payload = {
+        state,
+        lastUpdated: new Date().toLocaleString(),
+        adminKey: adminPassword
+      };
+      try { await mainDocRef.set(payload); } 
+      catch(e) { console.error(e); alert('Could not save changes.'); }
     }
-  }
 
-  // Enter key support (works in modern browsers and in an iframe)
-  adminPassInput.addEventListener('keydown', function(e){
-    if (e.key === 'Enter' || e.keyCode === 13){
-      e.preventDefault();
-      attemptLogin();
-    } else if (e.key === 'Escape') {
+    checklistEl.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', async () => {
+        if (!isAdmin) return;
+        li.classList.toggle('checked');
+        li.style.transition = "background .8s ease, color .8s ease, opacity .6s ease";
+        li.style.background = li.classList.contains('checked') ? "rgba(168,198,134,0.5)" : "rgba(139,0,0,0.5)";
+        li.style.color = "#fff";
+        await saveChecklist();
+      });
+    });
+
+    function staggerFadeIn(){
+      Array.from(checklistEl.querySelectorAll('li')).forEach((li, i) => {
+        li.style.opacity = "0";
+        setTimeout(() => { li.style.transition = "opacity .45s ease"; li.style.opacity = "1"; }, i*70);
+      });
+    }
+
+    function activateEditMode(){
+      if(isAdmin) return;
+      isAdmin = true;
+      document.body.classList.add('edit-mode');
+      stopEditBtn.style.display = 'block';
+      checklistEl.querySelectorAll('li').forEach(li => {
+        li.style.transition = "opacity .6s ease, background .8s ease, color .8s ease";
+        li.style.color = "#fff";
+        li.style.background = li.classList.contains('checked') ? "rgba(168,198,134,0.5)" : "rgba(139,0,0,0.5)";
+      });
+      staggerFadeIn();
+      loginBtn.blur();
       adminPassInput.value = '';
     }
-  });
-  loginBtn.addEventListener('click', attemptLogin);
-  stopEditBtn.addEventListener('click', deactivateEditMode);
 
-  /***** helper: if 'main' doc doesn't exist yet, we do not create it automatically
-           (admin can create by toggling any item then saving) *****/
-  // A small note: if you want the file to create the doc automatically the first time,
-  // allow writes temporarily in Firestore rules or create the document from the Firebase Console.
+    function deactivateEditMode(){
+      if(!isAdmin) return;
+      isAdmin = false;
+      document.body.classList.remove('edit-mode');
+      stopEditBtn.style.display = 'none';
+      checklistEl.querySelectorAll('li').forEach(li => li.removeAttribute('style'));
+    }
+
+    function attemptLogin(){
+      if(adminPassInput.value.trim() === adminPassword) activateEditMode();
+      else { alert('Incorrect password.'); adminPassInput.focus(); }
+    }
+
+    adminPassInput.addEventListener('keydown', e => {
+      if(e.key === 'Enter') attemptLogin();
+      else if(e.key === 'Escape') adminPassInput.value = '';
+    });
+    loginBtn.addEventListener('click', attemptLogin);
+    stopEditBtn.addEventListener('click', deactivateEditMode);
   </script>
 </body>
-
 </html>
-
